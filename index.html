@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saraiva &amp; Siqueira — Advocacia Previdenciária</title>
+  <meta name="description" content="Escritório de advocacia previdenciária em Maceió/AL. Especialistas em aposentadoria, BPC/LOAS, revisão de benefícios e planejamento previdenciário." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: #fff;
+      color: #1a2744;
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #1a2744;
+    }
+    a { text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; font-family: inherit; }
+    ::selection { background: #fdf4e0; color: #1a2744; }
+
+    /* ── Design Tokens ── */
+    :root {
+      --navy:        #1a2744;
+      --navy-mid:    #253460;
+      --navy-light:  #3a4f8a;
+      --gold:        #c9a84c;
+      --gold-light:  #e0c070;
+      --gold-pale:   #fdf4e0;
+      --whatsapp:    #25d366;
+      --whatsapp-dk: #1da851;
+      --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* ── Layout ── */
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin-inline: auto;
+      padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+    }
+    .section-py { padding-top: clamp(5rem, 10vw, 8rem); padding-bottom: clamp(5rem, 10vw, 8rem); }
+
+    /* ── Backgrounds ── */
+    .bg-off      { background-color: #f7f8fb; }
+    .gradient-hero { background: linear-gradient(160deg, #111c38 0%, #1e2f5c 60%, #172040 100%); }
+    .gradient-navy { background: linear-gradient(160deg, #141e3a 0%, #1e2f5c 100%); }
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(26,39,68,0.06) 1px, transparent 0);
+      background-size: 28px 28px;
+    }
+
+    /* ── Buttons ── */
+    .btn-gold {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.625rem; padding: 0.875rem 2rem; border-radius: 100px;
+      font-family: "Poppins", sans-serif; font-weight: 600; font-size: 0.9375rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--navy); box-shadow: 0 4px 20px rgba(201,168,76,0.40);
+      transition: transform 0.15s var(--ease-out), box-shadow 0.15s; white-space: nowrap;
+    }
+    .btn-gold:hover { transform: scale(1.03); box-shadow: 0 8px 28px rgba(201,168,76,0.50); }
+    .btn-gold:active { transform: scale(0.97); }
+
+    .btn-ghost-white {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.625rem; padding: 0.875rem 2rem; border-radius: 100px;
+      font-family: "Poppins", sans-serif; font-weight: 600; font-size: 0.9375rem;
+      background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.35);
+      transition: background 0.2s, border-color 0.2s, transform 0.15s; white-space: nowrap;
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.60); transform: scale(1.02); }
+
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.625rem; padding: 0.875rem 2rem; border-radius: 100px;
+      font-family: "Poppins", sans-serif; font-weight: 600; font-size: 0.9375rem;
+      background: var(--whatsapp); color: #fff;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.15s; white-space: nowrap;
+    }
+    .btn-whatsapp:hover { background: var(--whatsapp-dk); transform: scale(1.03); box-shadow: 0 8px 28px rgba(37,211,102,0.45); }
+    .btn-whatsapp:active { transform: scale(0.97); }
+
+    /* ── Pills ── */
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      padding: 0.375rem 0.875rem; border-radius: 100px;
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .pill-gold  { background: var(--gold-pale); color: #8a6c1a; }
+    .pill-navy  { background: #eef0f7; color: var(--navy-light); }
+    .pill-white { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.80); border: 1px solid rgba(255,255,255,0.20); }
+
+    /* ── Gold divider ── */
+    .gold-divider {
+      width: 3.5rem; height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+
+    /* ── Gold number ── */
+    .gold-number {
+      width: 2.75rem; height: 2.75rem; border-radius: 50%;
+      background: var(--gold); color: var(--navy);
+      font-family: "Poppins", sans-serif; font-weight: 700; font-size: 0.875rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(201,168,76,0.35);
+    }
+
+    /* ── Cards ── */
+    .card-clean {
+      background: #fff; border: 1px solid #eaecf4; border-radius: 1.25rem;
+      transition: box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out), border-color 0.25s;
+    }
+    .card-clean:hover {
+      box-shadow: 0 12px 40px rgba(26,39,68,0.10);
+      transform: translateY(-3px); border-color: var(--gold-light);
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 80ms !important; }
+    .delay-2 { transition-delay: 160ms !important; }
+    .delay-3 { transition-delay: 240ms !important; }
+    .delay-4 { transition-delay: 320ms !important; }
+
+    /* ── SVG icons inline ── */
+    .icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+    /* ── Header ── */
+    #header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      transition: background 0.35s, box-shadow 0.35s, backdrop-filter 0.35s;
+    }
+    #header.scrolled {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 #eaecf4;
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px; transition: height 0.35s;
+    }
+    #header.scrolled .header-inner { height: 64px; }
+    .logo-mark {
+      width: 2.25rem; height: 2.25rem; border-radius: 0.625rem;
+      background: linear-gradient(160deg, #1a2744, #253460);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 10px rgba(26,39,68,0.30); flex-shrink: 0;
+    }
+    .logo-name {
+      font-family: "Poppins", sans-serif; font-weight: 700; font-size: 0.9375rem;
+      letter-spacing: -0.01em; color: white; line-height: 1.2;
+      transition: color 0.3s;
+    }
+    .logo-sub {
+      font-size: 0.625rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.65); transition: color 0.3s;
+    }
+    #header.scrolled .logo-name { color: var(--navy); }
+    #header.scrolled .logo-sub  { color: var(--navy-light); }
+
+    .nav-desktop { display: flex; align-items: center; gap: 0.25rem; }
+    .nav-btn {
+      padding: 0.5rem 1rem; border-radius: 100px; border: none;
+      font-family: "Inter", sans-serif; font-size: 0.875rem; font-weight: 500;
+      background: transparent; color: rgba(255,255,255,0.85); transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.10); }
+    #header.scrolled .nav-btn { color: var(--navy); }
+    #header.scrolled .nav-btn:hover { background: #f7f8fb; }
+
+    .mobile-toggle {
+      display: none; padding: 0.5rem; background: none; border: none; color: white;
+    }
+    #header.scrolled .mobile-toggle { color: var(--navy); }
+
+    #mobile-menu {
+      display: none; background: white; border-top: 1px solid #eaecf4;
+      box-shadow: 0 8px 32px rgba(26,39,68,0.12);
+    }
+    #mobile-menu.open { display: block; }
+    .mobile-nav-btn {
+      display: block; width: 100%; text-align: left; padding: 0.75rem 1rem;
+      border-radius: 0.75rem; border: none; background: none;
+      font-family: "Inter", sans-serif; font-size: 0.9375rem; font-weight: 500; color: var(--navy);
+    }
+
+    @media (max-width: 767px) {
+      .nav-desktop { display: none; }
+      .mobile-toggle { display: block; }
+    }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;
+      padding-top: clamp(6rem, 12vw, 8rem); padding-bottom: clamp(4rem, 8vw, 6rem);
+    }
+    @media (min-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .hero-blob-1 {
+      position: absolute; top: 15%; right: -5%;
+      width: clamp(300px, 45vw, 600px); height: clamp(300px, 45vw, 600px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-blob-2 {
+      position: absolute; bottom: -10%; left: -5%;
+      width: clamp(200px, 30vw, 400px); height: clamp(200px, 30vw, 400px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,52,96,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-img-wrap {
+      position: relative; border-radius: 1.5rem; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(26,39,68,0.45);
+    }
+    .hero-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,30,56,0.55) 0%, transparent 50%);
+    }
+    .hero-img-badge {
+      position: absolute; bottom: 1.25rem; left: 1.25rem;
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 100px;
+      padding: 0.5rem 1.125rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .stats-row {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.5rem;
+    }
+    @media (min-width: 480px) {
+      .stats-row { grid-template-columns: repeat(4, 1fr); }
+    }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-value {
+      font-family: "Poppins", sans-serif; font-weight: 800;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem); color: white; line-height: 1;
+    }
+    .stat-label { font-size: 0.8125rem; color: rgba(255,255,255,0.55); margin-top: 0.25rem; }
+
+    /* ── Gold Path Connector ── */
+    .gold-connector {
+      display: flex; flex-direction: column; align-items: center;
+      height: 4rem; position: relative; z-index: 2;
+    }
+    .gold-connector-line {
+      width: 2px; flex: 1;
+      background: linear-gradient(to bottom, transparent, var(--gold) 50%, transparent);
+    }
+    .gold-connector-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gold); box-shadow: 0 0 0 3px var(--gold-pale); flex-shrink: 0;
+    }
+
+    /* ── ProofBar ── */
+    #proofbar { background: var(--navy); overflow: hidden; }
+    .proofbar-inner {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      align-items: center; gap: clamp(1.5rem, 4vw, 3.5rem);
+      padding-top: 1.75rem; padding-bottom: 1.75rem;
+    }
+    .proof-item { display: flex; align-items: center; gap: 0.625rem; }
+    .proof-item span { color: rgba(255,255,255,0.80); font-size: 0.8125rem; font-weight: 500; white-space: nowrap; }
+
+    /* ── Services ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+      gap: 1.25rem;
+    }
+    .service-card { padding: 2rem; }
+    .service-icon-wrap {
+      width: 3rem; height: 3rem; border-radius: 0.875rem;
+      background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Differentials ── */
+    .diff-grid {
+      display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center;
+    }
+    @media (min-width: 768px) { .diff-grid { grid-template-columns: 1fr 1fr; } }
+    .diff-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .diff-card { padding: 1.75rem; }
+    .diff-icon-wrap {
+      width: 2.75rem; height: 2.75rem; border-radius: 0.75rem;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.125rem;
+      box-shadow: 0 4px 14px rgba(26,39,68,0.25);
+    }
+
+    /* ── Journey ── */
+    .journey-timeline { max-width: 720px; margin: 0 auto; position: relative; }
+    .journey-vline {
+      position: absolute; left: 1.3125rem; top: 2rem; bottom: 2rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold) 0%, var(--gold-light) 100%);
+      border-radius: 2px;
+    }
+    .journey-steps { display: flex; flex-direction: column; gap: 2.5rem; }
+    .journey-step { display: flex; gap: 1.75rem; align-items: flex-start; }
+    .journey-step-content {
+      flex: 1; padding: 1.625rem 1.875rem;
+      display: flex; gap: 1.25rem; align-items: flex-start;
+    }
+    .journey-step-icon {
+      width: 2.75rem; height: 2.75rem; border-radius: 0.75rem;
+      background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    @media (max-width: 639px) { .journey-vline { display: none; } }
+
+    /* ── Testimonials ── */
+    .testimonials-wrap { max-width: 680px; margin: 0 auto; }
+    .testimonial-main {
+      position: relative; border-radius: 1.5rem; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(26,39,68,0.14); background: white;
+    }
+    .testimonial-img { width: 100%; height: auto; max-height: 520px; object-fit: contain; display: block; background: white; }
+    .testimonial-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 2.75rem; height: 2.75rem; border-radius: 50%;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+      border: 1px solid #eaecf4; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--navy);
+      box-shadow: 0 4px 16px rgba(26,39,68,0.14);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .testimonial-arrow:hover { transform: translateY(-50%) scale(1.08); }
+    .testimonial-arrow.left { left: 1rem; }
+    .testimonial-arrow.right { right: 1rem; }
+    .testimonial-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
+    .testimonial-dot {
+      border-radius: 100px; border: none; cursor: pointer;
+      height: 0.625rem; background: #c8ccd8; transition: all 0.3s;
+    }
+    .testimonial-dot.active { background: var(--gold); width: 2rem; }
+    .testimonial-dot:not(.active) { width: 0.625rem; }
+    .testimonial-thumbs { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1rem; }
+    .testimonial-thumb {
+      border-radius: 0.75rem; overflow: hidden; border: none; cursor: pointer; padding: 0;
+      outline: 2.5px solid transparent; outline-offset: 2px;
+      opacity: 0.45; transform: scale(1); transition: all 0.3s;
+    }
+    .testimonial-thumb.active { outline-color: var(--gold); opacity: 1; transform: scale(1.08); }
+    .testimonial-thumb img { width: 3.5rem; height: 3.5rem; object-fit: cover; display: block; }
+
+    /* ── Team ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: 1.75rem;
+    }
+    .team-card { overflow: hidden; }
+    .team-photo { position: relative; height: 22rem; background: #f0f2f7; overflow: hidden; }
+    .team-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+      transition: transform 0.5s var(--ease-out); display: block;
+    }
+    .team-photo:hover img { transform: scale(1.04); }
+    .team-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,30,56,0.75) 0%, transparent 55%);
+    }
+    .team-oab-badge {
+      position: absolute; bottom: 1rem; left: 1rem;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(12px);
+      border-radius: 100px; padding: 0.375rem 0.875rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; gap: 0.375rem;
+    }
+    .team-info { padding: 1.75rem; }
+    .team-name { font-family: "Poppins", sans-serif; font-weight: 700; font-size: 1.1875rem; color: var(--navy); margin-bottom: 0.25rem; }
+    .team-role { font-size: 0.8125rem; font-weight: 600; color: var(--gold); margin-bottom: 1rem; }
+    .team-bio { font-size: 0.875rem; color: #6b7280; line-height: 1.65; margin-bottom: 1.25rem; }
+    .team-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+    .team-tag {
+      padding: 0.25rem 0.75rem; border-radius: 100px;
+      background: var(--gold-pale); color: #8a6c1a;
+      font-size: 0.6875rem; font-weight: 600;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.875rem; }
+    .faq-item { overflow: hidden; }
+    .faq-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1.5rem 1.75rem; background: none; border: none; text-align: left;
+    }
+    .faq-btn-left { display: flex; align-items: center; gap: 1rem; }
+    .faq-question {
+      font-family: "Poppins", sans-serif; font-weight: 600;
+      font-size: clamp(0.9375rem, 2vw, 1.0625rem); color: var(--navy); line-height: 1.3;
+    }
+    .faq-chevron { color: var(--gold); transition: transform 0.25s; flex-shrink: 0; }
+    .faq-chevron.open { transform: rotate(180deg); }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s var(--ease-out); }
+    .faq-body.open { max-height: 400px; }
+    .faq-answer {
+      margin-left: 3.25rem; padding: 1rem 1.75rem 1.5rem 0;
+      border-top: 1px solid #eaecf4;
+      font-size: 0.9375rem; color: #6b7280; line-height: 1.7;
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .contact-card {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 1.5rem; padding: 2.25rem;
+    }
+    .contact-info-row { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .contact-icon-wrap {
+      width: 2.75rem; height: 2.75rem; border-radius: 0.875rem;
+      background: rgba(255,255,255,0.10);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-label {
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.10em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.375rem;
+    }
+    .contact-cta-card {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center;
+    }
+    .wa-icon-wrap {
+      width: 5rem; height: 5rem; border-radius: 1.5rem;
+      background: var(--whatsapp); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.75rem; box-shadow: 0 8px 32px rgba(37,211,102,0.45);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #0d1428; padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 1.5rem;
+    }
+    .footer-logo-mark {
+      width: 2rem; height: 2rem; border-radius: 0.5rem;
+      background: linear-gradient(160deg, #1e2f5c, #2a4080);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── WhatsApp Float ── */
+    #wa-float {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
+      width: 3.5rem; height: 3.5rem; border-radius: 50%;
+      background: var(--whatsapp); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.50); text-decoration: none;
+      transition: transform 0.15s var(--ease-out), box-shadow 0.15s;
+    }
+    #wa-float:hover { transform: scale(1.10); box-shadow: 0 10px 32px rgba(37,211,102,0.60); }
+    .wa-ping {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: var(--whatsapp); opacity: 0.3;
+      animation: ping 2s cubic-bezier(0,0,0.2,1) infinite;
+    }
+    @keyframes ping {
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+
+    /* ── Responsive helpers ── */
+    @media (max-width: 767px) {
+      .diff-cards { grid-template-columns: 1fr; }
+      .journey-step { flex-direction: column; }
+      .journey-step .gold-number { margin-bottom: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════════════════════════ -->
+<header id="header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a href="#hero" onclick="scrollTo('hero')" style="display:flex;align-items:center;gap:0.75rem;">
+        <div class="logo-mark">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/>
+            <line x1="9" y1="9" x2="10" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/>
+          </svg>
+        </div>
+        <div>
+          <div class="logo-name">Saraiva &amp; Siqueira</div>
+          <div class="logo-sub">Advocacia Previdenciária</div>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="nav-desktop">
+        <button class="nav-btn" onclick="scrollTo('servicos')">Serviços</button>
+        <button class="nav-btn" onclick="scrollTo('diferenciais')">Diferenciais</button>
+        <button class="nav-btn" onclick="scrollTo('jornada')">Como funciona</button>
+        <button class="nav-btn" onclick="scrollTo('equipe')">Equipe</button>
+        <button class="nav-btn" onclick="scrollTo('contato')">Contato</button>
+        <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="margin-left:0.75rem;padding:0.625rem 1.375rem;font-size:0.875rem;">
+          <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Fale Conosco
+        </a>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button class="mobile-toggle" onclick="toggleMenu()" id="menu-btn" aria-label="Menu">
+        <svg id="icon-menu" class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="icon-close" class="icon" style="display:none;" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu">
+    <div class="container" style="padding-top:1rem;padding-bottom:1.25rem;display:flex;flex-direction:column;gap:0.25rem;">
+      <button class="mobile-nav-btn" onclick="scrollTo('servicos');toggleMenu()">Serviços</button>
+      <button class="mobile-nav-btn" onclick="scrollTo('diferenciais');toggleMenu()">Diferenciais</button>
+      <button class="mobile-nav-btn" onclick="scrollTo('jornada');toggleMenu()">Como funciona</button>
+      <button class="mobile-nav-btn" onclick="scrollTo('equipe');toggleMenu()">Equipe</button>
+      <button class="mobile-nav-btn" onclick="scrollTo('contato');toggleMenu()">Contato</button>
+      <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="margin-top:0.5rem;justify-content:center;">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Fale Conosco pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════════════ -->
+<section id="hero" class="gradient-hero" style="position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:0.06;" class="dot-grid"></div>
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="hero-grid">
+      <!-- Left -->
+      <div>
+        <div class="pill pill-white reveal" style="margin-bottom:1.75rem;">
+          <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+          Advocacia Previdenciária · Maceió/AL
+        </div>
+
+        <h1 class="reveal delay-1" style="font-size:clamp(2.5rem,6vw,4.25rem);font-weight:800;color:white;margin-bottom:1.5rem;line-height:1.05;">
+          Seu caminho para a<br/>
+          <span style="color:var(--gold);">Aposentadoria</span><br/>
+          sem complicações
+        </h1>
+
+        <p class="reveal delay-2" style="font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,0.72);line-height:1.7;margin-bottom:2.5rem;max-width:30rem;">
+          Conte com orientação especializada para destravar e conquistar a concessão do sonho da sua aposentadoria. Atendimento humanizado, resultado garantido.
+        </p>
+
+        <div class="reveal delay-3" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+          <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="font-size:1rem;padding:1rem 2.25rem;">
+            <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Quero Me Aposentar
+          </a>
+          <button onclick="scrollTo('servicos')" class="btn-ghost-white" style="font-size:1rem;padding:1rem 2.25rem;">
+            Conheça nossos serviços
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row reveal delay-4">
+          <div class="stat-item"><span class="stat-value">5+</span><span class="stat-label">Anos de experiência</span></div>
+          <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">Especialistas dedicados</span></div>
+          <div class="stat-item"><span class="stat-value">9</span><span class="stat-label">Áreas de atuação</span></div>
+          <div class="stat-item"><span class="stat-value">100%</span><span class="stat-label">Foco no seu direito</span></div>
+        </div>
+      </div>
+
+      <!-- Right — photo -->
+      <div class="reveal delay-2">
+        <div class="hero-img-wrap">
+          <img src="images/siqueira.jpg" alt="Equipe Saraiva &amp; Siqueira" style="width:100%;height:auto;display:block;" loading="eager" />
+          <div class="hero-img-overlay"></div>
+          <div class="hero-img-badge">
+            <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span style="color:white;font-size:0.75rem;font-weight:600;">Mais de 5 anos de atuação</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROOF BAR ═════════════════════════════════════════════════════════════ -->
+<section id="proofbar">
+  <div class="container">
+    <div class="proofbar-inner">
+      <div class="proof-item">
+        <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Inscritos na OAB/AL</span>
+      </div>
+      <div class="proof-item">
+        <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        <span>Especialistas certificados</span>
+      </div>
+      <div class="proof-item">
+        <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Sigilo garantido</span>
+      </div>
+      <div class="proof-item">
+        <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Atendimento humanizado</span>
+      </div>
+      <div class="proof-item">
+        <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        <span>Consulta inicial gratuita</span>
+      </div>
+      <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.25rem;border-radius:100px;background:var(--gold);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:700;font-size:0.8125rem;white-space:nowrap;box-shadow:0 2px 12px rgba(201,168,76,0.35);transition:transform 0.15s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Consulta Gratuita
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOLD PATH CONNECTOR ══════════════════════════════════════════════════ -->
+<div class="gold-connector" style="background:#f7f8fb;">
+  <div class="gold-connector-line"></div>
+  <div class="gold-connector-dot"></div>
+  <div class="gold-connector-line"></div>
+</div>
+
+<!-- ═══ SERVICES ═════════════════════════════════════════════════════════════ -->
+<section id="servicos" class="section-py" style="background:#f7f8fb;position:relative;overflow:hidden;">
+  <div class="dot-grid" style="position:absolute;inset:0;opacity:1;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;margin-bottom:clamp(3rem,6vw,5rem);">
+      <div class="pill pill-gold" style="margin-bottom:1.25rem;">
+        <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+        Nossas especialidades
+      </div>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.25rem);margin-bottom:1.25rem;">
+        Áreas de <span style="color:var(--gold);">Atuação</span>
+      </h2>
+      <div class="gold-divider" style="margin:0 auto 1.5rem;"></div>
+      <p style="font-size:clamp(1rem,2vw,1.125rem);color:#6b7280;max-width:34rem;margin:0 auto;line-height:1.7;">
+        Atuamos em todas as frentes do direito previdenciário para garantir que você receba o que é seu por direito.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <!-- BPC/LOAS -->
+      <div class="card-clean service-card reveal delay-1">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">BPC/LOAS</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Benefício de Prestação Continuada para pessoas com deficiência e idosos de baixa renda.</p>
+      </div>
+      <!-- Aposentadoria -->
+      <div class="card-clean service-card reveal delay-2">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">Aposentadoria</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Acompanhamento completo para conquistar sua aposentadoria sem burocracia.</p>
+      </div>
+      <!-- Planejamento Previdenciário -->
+      <div class="card-clean service-card reveal delay-3">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">Planejamento Previdenciário</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Plano personalizado para assegurar seu futuro com tranquilidade e segurança.</p>
+      </div>
+      <!-- Revisão de Benefícios -->
+      <div class="card-clean service-card reveal delay-4">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">Revisão de Benefícios</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Revisão do seu benefício para garantir que você receba o valor correto.</p>
+      </div>
+      <!-- Salário Maternidade -->
+      <div class="card-clean service-card reveal delay-1">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">Salário Maternidade</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Acesso ao salário-maternidade para mães contribuintes da Previdência Social.</p>
+      </div>
+      <!-- Pensão por Morte -->
+      <div class="card-clean service-card reveal delay-2">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">Pensão por Morte</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Apoio humanizado às famílias na obtenção da pensão por morte.</p>
+      </div>
+      <!-- Auxílio Doença -->
+      <div class="card-clean service-card reveal delay-3">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">Auxílio Doença</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Auxílio-doença para trabalhadores temporariamente incapacitados.</p>
+      </div>
+      <!-- Auxílio Acidente -->
+      <div class="card-clean service-card reveal delay-4">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">Auxílio Acidente</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Indenização devida após acidentes de trabalho.</p>
+      </div>
+      <!-- Ações Trabalhistas -->
+      <div class="card-clean service-card reveal delay-1">
+        <div class="service-icon-wrap">
+          <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 2-8.5 8.5 2 2 8.5-8.5-2-2z"/><path d="m7 13-5 5 2 2 5-5-2-2z"/><path d="m17 7 5 5-2 2-5-5 2-2z"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.625rem;">Ações Trabalhistas</h3>
+        <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Representação jurídica em ações trabalhistas com expertise e dedicação.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:3.5rem;">
+      <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Consultar um Especialista
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOLD PATH CONNECTOR ══════════════════════════════════════════════════ -->
+<div class="gold-connector" style="background:white;">
+  <div class="gold-connector-line"></div>
+  <div class="gold-connector-dot"></div>
+  <div class="gold-connector-line"></div>
+</div>
+
+<!-- ═══ DIFFERENTIALS ════════════════════════════════════════════════════════ -->
+<section id="diferenciais" class="section-py" style="background:white;">
+  <div class="container">
+    <div class="diff-grid">
+      <!-- Left text -->
+      <div>
+        <div class="pill pill-gold reveal" style="margin-bottom:1.25rem;">
+          <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Por que nos escolher
+        </div>
+        <h2 class="reveal delay-1" style="font-size:clamp(2rem,4.5vw,3.25rem);margin-bottom:1.25rem;">
+          Por que escolher o <span style="color:var(--gold);">Saraiva &amp; Siqueira?</span>
+        </h2>
+        <div class="gold-divider reveal delay-2" style="margin-bottom:1.5rem;"></div>
+        <p class="reveal delay-2" style="font-size:clamp(1rem,2vw,1.125rem);color:#6b7280;line-height:1.7;margin-bottom:2.5rem;">
+          Mais do que advogados, somos parceiros na conquista dos seus direitos previdenciários. Cada detalhe do seu caso importa para nós.
+        </p>
+        <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-gold reveal delay-3">
+          <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Falar com um Especialista
+        </a>
+      </div>
+      <!-- Right cards -->
+      <div class="diff-cards">
+        <div class="card-clean diff-card reveal delay-1">
+          <div class="diff-icon-wrap">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:0.9375rem;color:var(--navy);margin-bottom:0.5rem;line-height:1.3;">Especialização em Direito Previdenciário</h3>
+          <p style="font-size:0.8125rem;color:#6b7280;line-height:1.6;">Nossa equipe é altamente qualificada e possui vasta experiência em todos os aspectos do direito previdenciário.</p>
+        </div>
+        <div class="card-clean diff-card reveal delay-2">
+          <div class="diff-icon-wrap">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:0.9375rem;color:var(--navy);margin-bottom:0.5rem;line-height:1.3;">Experiência Comprovada</h3>
+          <p style="font-size:0.8125rem;color:#6b7280;line-height:1.6;">Com anos de atuação na área, possuímos o conhecimento e a prática necessários para lidar com os casos mais complexos.</p>
+        </div>
+        <div class="card-clean diff-card reveal delay-3">
+          <div class="diff-icon-wrap">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:0.9375rem;color:var(--navy);margin-bottom:0.5rem;line-height:1.3;">Atendimento Personalizado</h3>
+          <p style="font-size:0.8125rem;color:#6b7280;line-height:1.6;">Cada caso é único. Oferecemos atendimento focado nas suas necessidades específicas, do início ao fim.</p>
+        </div>
+        <div class="card-clean diff-card reveal delay-4">
+          <div class="diff-icon-wrap">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:0.9375rem;color:var(--navy);margin-bottom:0.5rem;line-height:1.3;">Transparência e Ética</h3>
+          <p style="font-size:0.8125rem;color:#6b7280;line-height:1.6;">Você estará sempre informado sobre o andamento do seu caso. Clareza e honestidade em cada etapa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOLD PATH CONNECTOR ══════════════════════════════════════════════════ -->
+<div class="gold-connector" style="background:#f7f8fb;">
+  <div class="gold-connector-line"></div>
+  <div class="gold-connector-dot"></div>
+  <div class="gold-connector-line"></div>
+</div>
+
+<!-- ═══ JOURNEY ══════════════════════════════════════════════════════════════ -->
+<section id="jornada" class="section-py" style="background:white;">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:clamp(3rem,6vw,5rem);">
+      <div class="pill pill-gold" style="margin-bottom:1.25rem;">
+        <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        Como funciona
+      </div>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.25rem);margin-bottom:1.25rem;">
+        Seu caminho <span style="color:var(--gold);">dourado</span> até a aposentadoria
+      </h2>
+      <div class="gold-divider" style="margin:0 auto 1.5rem;"></div>
+      <p style="font-size:clamp(1rem,2vw,1.125rem);color:#6b7280;max-width:34rem;margin:0 auto;line-height:1.7;">
+        Um processo claro, transparente e personalizado — do primeiro contato à conquista do seu benefício.
+      </p>
+    </div>
+
+    <div class="journey-timeline">
+      <div class="journey-vline"></div>
+      <div class="journey-steps">
+        <!-- Step 01 -->
+        <div class="journey-step reveal delay-1">
+          <div class="gold-number" style="margin-top:0.125rem;">01</div>
+          <div class="card-clean journey-step-content">
+            <div class="journey-step-icon">
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.5rem;">Consulta Inicial Gratuita</h3>
+              <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Entre em contato pelo WhatsApp. Analisamos seu caso sem compromisso e com total sigilo.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Step 02 -->
+        <div class="journey-step reveal delay-2">
+          <div class="gold-number" style="margin-top:0.125rem;">02</div>
+          <div class="card-clean journey-step-content">
+            <div class="journey-step-icon">
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div>
+              <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.5rem;">Análise do Seu Histórico</h3>
+              <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Levantamos todo o seu histórico de contribuições e identificamos os melhores caminhos para você.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Step 03 -->
+        <div class="journey-step reveal delay-3">
+          <div class="gold-number" style="margin-top:0.125rem;">03</div>
+          <div class="card-clean journey-step-content">
+            <div class="journey-step-icon">
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <div>
+              <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.5rem;">Estratégia Personalizada</h3>
+              <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Elaboramos um plano de ação sob medida para maximizar o valor do seu benefício.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Step 04 -->
+        <div class="journey-step reveal delay-4">
+          <div class="gold-number" style="margin-top:0.125rem;">04</div>
+          <div class="card-clean journey-step-content">
+            <div class="journey-step-icon">
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.0625rem;color:var(--navy);margin-bottom:0.5rem;">Conquista do Benefício</h3>
+              <p style="font-size:0.875rem;color:#6b7280;line-height:1.65;">Cuidamos de todo o processo junto ao INSS ou na Justiça, até você receber o que é seu por direito.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:3.5rem;">
+      <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Iniciar Minha Jornada
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOLD PATH CONNECTOR ══════════════════════════════════════════════════ -->
+<div class="gold-connector" style="background:#f7f8fb;">
+  <div class="gold-connector-line"></div>
+  <div class="gold-connector-dot"></div>
+  <div class="gold-connector-line"></div>
+</div>
+
+<!-- ═══ TESTIMONIALS ═════════════════════════════════════════════════════════ -->
+<section id="depoimentos" class="section-py bg-off" style="position:relative;overflow:hidden;">
+  <div class="dot-grid" style="position:absolute;inset:0;opacity:1;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;margin-bottom:clamp(3rem,6vw,5rem);">
+      <div class="pill pill-gold" style="margin-bottom:1.25rem;">
+        <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Depoimentos
+      </div>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.25rem);margin-bottom:1.25rem;">
+        O que falam <span style="color:var(--gold);">sobre nós</span>
+      </h2>
+      <div class="gold-divider" style="margin:0 auto 1.5rem;"></div>
+      <p style="font-size:clamp(1rem,2vw,1.125rem);color:#6b7280;max-width:34rem;margin:0 auto;line-height:1.7;">
+        A satisfação dos nossos clientes é a maior prova do nosso compromisso com resultados reais.
+      </p>
+    </div>
+
+    <div class="testimonials-wrap reveal">
+      <div class="testimonial-main">
+        <img id="testimonial-img" src="depoimentos/01.jpg" alt="Depoimento 1" class="testimonial-img" loading="lazy" />
+        <button class="testimonial-arrow left" onclick="testimonialPrev()" aria-label="Anterior">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="testimonial-arrow right" onclick="testimonialNext()" aria-label="Próximo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="testimonial-dots" id="testimonial-dots"></div>
+
+      <div class="testimonial-thumbs" id="testimonial-thumbs"></div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:3.5rem;">
+      <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Quero Ser o Próximo Caso de Sucesso
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOLD PATH CONNECTOR ══════════════════════════════════════════════════ -->
+<div class="gold-connector" style="background:white;">
+  <div class="gold-connector-line"></div>
+  <div class="gold-connector-dot"></div>
+  <div class="gold-connector-line"></div>
+</div>
+
+<!-- ═══ TEAM ══════════════════════════════════════════════════════════════════ -->
+<section id="equipe" class="section-py" style="background:white;">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:clamp(3rem,6vw,5rem);">
+      <div class="pill pill-navy" style="margin-bottom:1.25rem;">
+        <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Nossa equipe
+      </div>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.25rem);margin-bottom:1.25rem;">
+        Quem <span style="color:var(--gold);">Somos</span>
+      </h2>
+      <div class="gold-divider" style="margin:0 auto 1.5rem;"></div>
+      <p style="font-size:clamp(1rem,2vw,1.125rem);color:#6b7280;max-width:34rem;margin:0 auto;line-height:1.7;">
+        Profissionais altamente qualificados e apaixonados por garantir seus direitos previdenciários.
+      </p>
+    </div>
+
+    <div class="team-grid">
+      <!-- José Saraiva -->
+      <div class="card-clean team-card reveal delay-1">
+        <div class="team-photo">
+          <img src="images/saraiva.webp" alt="José Saraiva" loading="lazy" />
+          <div class="team-photo-overlay"></div>
+          <div class="team-oab-badge">
+            <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+            <span style="color:white;font-size:0.6875rem;font-weight:600;">OAB/AL nº 16.933</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">José Saraiva</div>
+          <div class="team-role">Sócio Fundador</div>
+          <p class="team-bio">Formado pela Universidade Federal de Alagoas — UFAL em 2015. Especialista em direito previdenciário com atuação há mais de 5 anos. MBA em Planejamento Previdenciário pelo ICDS. Pós-graduado em Investimentos e Banking pela UniBF.</p>
+          <div class="team-tags">
+            <span class="team-tag">Direito Previdenciário</span>
+            <span class="team-tag">Planejamento</span>
+            <span class="team-tag">INSS</span>
+          </div>
+        </div>
+      </div>
+      <!-- Mikaela Siqueira -->
+      <div class="card-clean team-card reveal delay-2">
+        <div class="team-photo">
+          <img src="images/siqueira.jpg" alt="Mikaela Siqueira" loading="lazy" />
+          <div class="team-photo-overlay"></div>
+          <div class="team-oab-badge">
+            <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+            <span style="color:white;font-size:0.6875rem;font-weight:600;">OAB/AL nº 16.628</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Mikaela Siqueira</div>
+          <div class="team-role">Sócia</div>
+          <p class="team-bio">Formada pelo Centro Universitário Cesmac desde 2018. Pós-graduanda em Direito Previdenciário pelo Especcial Jus (Frederico Amado). Especialista em direito previdenciário e trabalhista com atuação há mais de 5 anos.</p>
+          <div class="team-tags">
+            <span class="team-tag">Direito Previdenciário</span>
+            <span class="team-tag">Trabalhista</span>
+            <span class="team-tag">BPC/LOAS</span>
+          </div>
+        </div>
+      </div>
+      <!-- Mariana Morais -->
+      <div class="card-clean team-card reveal delay-3">
+        <div class="team-photo">
+          <img src="images/mariana.jpg" alt="Mariana Morais" loading="lazy" />
+          <div class="team-photo-overlay"></div>
+          <div class="team-oab-badge">
+            <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+            <span style="color:white;font-size:0.6875rem;font-weight:600;">OAB/AL nº 17.777</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Mariana Morais</div>
+          <div class="team-role">Advogada Trabalhista e Empresarial</div>
+          <p class="team-bio">Formada pelo Centro Universitário Maurício de Nassau — UNINASSAU, desde 2017. Pós-graduada em Prática Previdenciária pelo Especcial Jus em 2023. Especialista em direito do trabalho e empresarial com atuação há mais de 4 anos.</p>
+          <div class="team-tags">
+            <span class="team-tag">Trabalhista</span>
+            <span class="team-tag">Empresarial</span>
+            <span class="team-tag">Previdenciário</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:3.5rem;">
+      <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Falar com Nossa Equipe
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOLD PATH CONNECTOR ══════════════════════════════════════════════════ -->
+<div class="gold-connector" style="background:#f7f8fb;">
+  <div class="gold-connector-line"></div>
+  <div class="gold-connector-dot"></div>
+  <div class="gold-connector-line"></div>
+</div>
+
+<!-- ═══ FAQ ═══════════════════════════════════════════════════════════════════ -->
+<section id="faq" class="section-py bg-off" style="position:relative;overflow:hidden;">
+  <div class="dot-grid" style="position:absolute;inset:0;opacity:1;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;margin-bottom:clamp(3rem,6vw,5rem);">
+      <div class="pill pill-gold" style="margin-bottom:1.25rem;">
+        <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Dúvidas frequentes
+      </div>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.25rem);margin-bottom:1.25rem;">
+        Confira as principais <span style="color:var(--gold);">dúvidas</span>
+      </h2>
+      <div class="gold-divider" style="margin:0 auto 1.5rem;"></div>
+      <p style="font-size:clamp(1rem,2vw,1.125rem);color:#6b7280;max-width:34rem;margin:0 auto;line-height:1.7;">
+        Respondemos as perguntas mais comuns sobre aposentadoria e benefícios previdenciários.
+      </p>
+    </div>
+
+    <div class="faq-list">
+      <div class="card-clean faq-item reveal delay-1">
+        <button class="faq-btn" onclick="toggleFaq(0)">
+          <div class="faq-btn-left">
+            <div class="gold-number" style="width:2.25rem;height:2.25rem;font-size:0.75rem;">01</div>
+            <span class="faq-question">E se meu pedido de aposentadoria for negado?</span>
+          </div>
+          <svg id="faq-chevron-0" class="faq-chevron open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body open" id="faq-body-0">
+          <div class="faq-answer">Não se preocupe. Se seu pedido for negado, analisamos detalhadamente o caso e elaboramos uma estratégia para recursos e novas solicitações, aumentando significativamente suas chances de obter o benefício que você merece.</div>
+        </div>
+      </div>
+
+      <div class="card-clean faq-item reveal delay-2">
+        <button class="faq-btn" onclick="toggleFaq(1)">
+          <div class="faq-btn-left">
+            <div class="gold-number" style="width:2.25rem;height:2.25rem;font-size:0.75rem;">02</div>
+            <span class="faq-question">Tenho dúvidas sobre o melhor momento para me aposentar. Como vocês podem me ajudar?</span>
+          </div>
+          <svg id="faq-chevron-1" class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body" id="faq-body-1">
+          <div class="faq-answer">Realizamos um planejamento previdenciário completo e personalizado, analisando seu histórico de contribuições, tempo de serviço e as regras de transição da Reforma da Previdência. Identificamos o momento mais vantajoso para você se aposentar e maximizamos o valor do seu benefício.</div>
+        </div>
+      </div>
+
+      <div class="card-clean faq-item reveal delay-3">
+        <button class="faq-btn" onclick="toggleFaq(2)">
+          <div class="faq-btn-left">
+            <div class="gold-number" style="width:2.25rem;height:2.25rem;font-size:0.75rem;">03</div>
+            <span class="faq-question">Quero garantir um futuro tranquilo para minha família. Como posso ter certeza?</span>
+          </div>
+          <svg id="faq-chevron-2" class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body" id="faq-body-2">
+          <div class="faq-answer">Nosso planejamento inclui análise de pensão por morte, benefícios para dependentes e estratégias de proteção familiar. Orientamos você sobre todas as coberturas disponíveis para que sua família esteja protegida em qualquer situação.</div>
+        </div>
+      </div>
+
+      <div class="card-clean faq-item reveal delay-4">
+        <button class="faq-btn" onclick="toggleFaq(3)">
+          <div class="faq-btn-left">
+            <div class="gold-number" style="width:2.25rem;height:2.25rem;font-size:0.75rem;">04</div>
+            <span class="faq-question">Devo contratar um advogado mesmo já tendo contribuído corretamente ao INSS?</span>
+          </div>
+          <svg id="faq-chevron-3" class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-body" id="faq-body-3">
+          <div class="faq-answer">Sim. Mesmo contribuindo corretamente, muitos segurados têm direito a benefícios maiores do que o INSS concede administrativamente. Um especialista pode identificar períodos especiais, atividades insalubres, revisões de cálculo e outras situações que aumentam significativamente o valor da sua aposentadoria.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:3.5rem;">
+      <p style="color:#6b7280;margin-bottom:1.25rem;font-size:0.9375rem;">Ainda tem dúvidas? Fale diretamente com um especialista.</p>
+      <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Tirar Dúvidas pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOLD PATH CONNECTOR ══════════════════════════════════════════════════ -->
+<div class="gold-connector" style="background:#141e3a;">
+  <div class="gold-connector-line"></div>
+  <div class="gold-connector-dot"></div>
+  <div class="gold-connector-line"></div>
+</div>
+
+<!-- ═══ CONTACT ══════════════════════════════════════════════════════════════ -->
+<section id="contato" class="section-py gradient-navy" style="position:relative;overflow:hidden;">
+  <div class="dot-grid" style="position:absolute;inset:0;opacity:0.07;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60vw;height:60vw;max-width:700px;max-height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;margin-bottom:clamp(3rem,6vw,5rem);">
+      <div class="pill pill-white" style="margin-bottom:1.25rem;">
+        <svg class="icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Onde estamos
+      </div>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.25rem);color:white;margin-bottom:1.25rem;">
+        Escritório e <span style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Endereço</span>
+      </h2>
+      <div class="gold-divider" style="margin:0 auto;"></div>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-card reveal" style="display:flex;flex-direction:column;gap:2rem;">
+        <div class="contact-info-row">
+          <div class="contact-icon-wrap">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Endereço</div>
+            <strong style="color:white;">Maceió — AL</strong><br/>
+            <span style="color:rgba(255,255,255,0.60);font-size:0.875rem;">Av. Betel &amp; R. A. Cj. Cleto Marques Luz<br/>Tabuleiro dos Martins<br/>CEP 57.082-840</span>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-icon-wrap">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Horário</div>
+            <strong style="color:white;">Segunda a Sexta</strong><br/>
+            <span style="color:rgba(255,255,255,0.60);font-size:0.875rem;">das 9h às 18h</span>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-icon-wrap">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Telefone</div>
+            <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" style="color:var(--gold);font-weight:600;font-size:1.0625rem;">(82) 99106-4614</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA card -->
+      <div class="contact-card contact-cta-card reveal delay-2">
+        <div class="wa-icon-wrap">
+          <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.5rem;color:white;margin-bottom:0.875rem;">Agende sua Consulta</h3>
+        <p style="color:rgba(255,255,255,0.60);font-size:0.9375rem;line-height:1.65;margin-bottom:2rem;">
+          Entre em contato agora pelo WhatsApp e dê o primeiro passo para conquistar seus direitos previdenciários.
+        </p>
+        <a href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="width:100%;justify-content:center;">
+          <svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Agendar Consulta Gratuita
+        </a>
+        <p style="color:rgba(255,255,255,0.35);font-size:0.75rem;margin-top:1rem;">Atendimento rápido · Sem compromisso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div class="footer-logo-mark">
+          <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/></svg>
+        </div>
+        <div>
+          <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:0.875rem;color:white;">Saraiva &amp; Siqueira</div>
+          <div style="font-size:0.625rem;color:rgba(255,255,255,0.40);letter-spacing:0.08em;text-transform:uppercase;">Advocacia Previdenciária</div>
+        </div>
+      </div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);text-align:center;">
+        © <span id="year"></span> Saraiva e Siqueira Advocacia Previdenciária. Todos os direitos reservados.
+      </div>
+      <a href="https://saraivasiqueira.adv.br/politica-de-privacidade" target="_blank" rel="noopener noreferrer" style="font-size:0.75rem;color:rgba(255,255,255,0.40);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.40)'">
+        Política de Privacidade
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ WHATSAPP FLOAT ════════════════════════════════════════════════════════ -->
+<a id="wa-float" href="https://api.whatsapp.com/send?phone=5582991064614&text=Oi%2C%20gostaria%20de%20um%20atendimento%2C%20vim%20pelo%20site." target="_blank" rel="noopener noreferrer" aria-label="Fale pelo WhatsApp">
+  <span class="wa-ping"></span>
+  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</a>
+
+<!-- ═══ JAVASCRIPT ═════════════════════════════════════════════════════════════ -->
+<script>
+  // ── Year ──
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── Scroll reveal ──
+  const revealObs = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.10, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach((el) => revealObs.observe(el));
+
+  // ── Sticky header ──
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 32);
+  }, { passive: true });
+
+  // ── Smooth scroll ──
+  function scrollTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ── Mobile menu ──
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const iconMenu = document.getElementById('icon-menu');
+    const iconClose = document.getElementById('icon-close');
+    const isOpen = menu.classList.toggle('open');
+    iconMenu.style.display = isOpen ? 'none' : 'inline-block';
+    iconClose.style.display = isOpen ? 'inline-block' : 'none';
+  }
+
+  // ── Testimonials ──
+  const TESTIMONIALS = [
+    { src: 'depoimentos/01.jpg', alt: 'Depoimento 1' },
+    { src: 'depoimentos/02.jpg', alt: 'Depoimento 2' },
+    { src: 'depoimentos/03.jpg', alt: 'Depoimento 3' },
+    { src: 'depoimentos/04.jpg', alt: 'Depoimento 4' },
+    { src: 'depoimentos/05.jpg', alt: 'Depoimento 5' },
+  ];
+  let currentT = 0;
+  let tTimer = null;
+
+  function buildTestimonialUI() {
+    const dotsEl = document.getElementById('testimonial-dots');
+    const thumbsEl = document.getElementById('testimonial-thumbs');
+    dotsEl.innerHTML = '';
+    thumbsEl.innerHTML = '';
+    TESTIMONIALS.forEach((t, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'testimonial-dot' + (i === currentT ? ' active' : '');
+      dot.setAttribute('aria-label', 'Ver depoimento ' + (i + 1));
+      dot.onclick = () => goTestimonial(i);
+      dotsEl.appendChild(dot);
+
+      const thumb = document.createElement('button');
+      thumb.className = 'testimonial-thumb' + (i === currentT ? ' active' : '');
+      thumb.setAttribute('aria-label', 'Ver depoimento ' + (i + 1));
+      thumb.onclick = () => goTestimonial(i);
+      const img = document.createElement('img');
+      img.src = t.src; img.alt = t.alt; img.loading = 'lazy';
+      thumb.appendChild(img);
+      thumbsEl.appendChild(thumb);
+    });
+  }
+
+  function goTestimonial(idx) {
+    const imgEl = document.getElementById('testimonial-img');
+    imgEl.style.opacity = '0';
+    setTimeout(() => {
+      currentT = idx;
+      imgEl.src = TESTIMONIALS[currentT].src;
+      imgEl.alt = TESTIMONIALS[currentT].alt;
+      imgEl.style.opacity = '1';
+      buildTestimonialUI();
+    }, 220);
+    resetTTimer();
+  }
+
+  function testimonialNext() { goTestimonial((currentT + 1) % TESTIMONIALS.length); }
+  function testimonialPrev() { goTestimonial((currentT - 1 + TESTIMONIALS.length) % TESTIMONIALS.length); }
+
+  function resetTTimer() {
+    if (tTimer) clearInterval(tTimer);
+    tTimer = setInterval(testimonialNext, 5500);
+  }
+
+  document.getElementById('testimonial-img').style.transition = 'opacity 0.22s';
+  buildTestimonialUI();
+  resetTTimer();
+
+  // ── FAQ accordion ──
+  function toggleFaq(idx) {
+    const body = document.getElementById('faq-body-' + idx);
+    const chevron = document.getElementById('faq-chevron-' + idx);
+    const isOpen = body.classList.toggle('open');
+    chevron.classList.toggle('open', isOpen);
+  }
+</script>
+</body>
+</html>
